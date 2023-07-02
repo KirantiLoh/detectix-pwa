@@ -1,4 +1,5 @@
 import { TextInput } from '@mantine/core'
+import { useRouter } from 'next/router';
 import { useState, useEffect, useRef } from 'react'
 import { AiOutlineEnter } from 'react-icons/ai';
 import { HiSearch } from 'react-icons/hi';
@@ -7,9 +8,12 @@ const SearchBar = () => {
 
     const [search, setSearch] = useState('');
 
+    const router = useRouter();
+
     const handleSearch = () => {
         console.log("Searching");
         if (!search) return;
+        router.push(`/search?q=${search}`);
     }
 
     return (
@@ -18,12 +22,13 @@ const SearchBar = () => {
             handleSearch();
         }}>
             <TextInput
-                // ref={inputRef}
                 value={search}
                 onChange={(e) => setSearch(e.currentTarget.value)}
-                placeholder='Cari berdasarkan ID BPOM'
+                placeholder='ID BPOM, bahan aktif, atau nama produk'
                 radius="xl"
                 icon={<HiSearch />}
+                // icon={<HiSearch />}
+                rightSection={<HiSearch className='' onClick={handleSearch} />}
                 variant='filled'
                 classNames={{
                     input: "bg-white shadow"

@@ -14,6 +14,7 @@ const ProfilePage = () => {
 
     return (
         <main className="flex flex-col items-center w-full min-h-screen gap-5 p-5">
+            <h1 className='text-2xl font-bold text-zinc-700'>Akun</h1>
             <Image src={user?.photoURL ?? "/default-user.png"} alt="" width={150} height={150} className='mx-auto' />
             <section className='text-center'>
                 <h1 className="text-2xl text-zinc-700">Halo, {user?.displayName}</h1>

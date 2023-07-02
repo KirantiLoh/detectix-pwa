@@ -4,6 +4,8 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react'
 import { AiOutlineFullscreen, AiOutlineFullscreenExit } from 'react-icons/ai'
+import { Accordion } from '@mantine/core'
+
 const ScanResultPage = () => {
 
     const { result, imageUrl, clearImage } = useOCR();
@@ -14,8 +16,15 @@ const ScanResultPage = () => {
 
     useEffect(() => {
         !imageUrl && router.replace('/');
-        return () => clearImage()
-    }, [])
+        // router.events.on('routeChangeComplete', () => {
+        //     imageUrl && clearImage();
+        // })
+        // return () => {
+        //     router.events.off('routeChangeComplete', () => {
+        //         imageUrl && clearImage();
+        //     })
+        // }
+    }, [router])
 
 
     return (
@@ -30,13 +39,25 @@ const ScanResultPage = () => {
                             {fullScreen ? <AiOutlineFullscreenExit /> : <AiOutlineFullscreen />}
                         </button>
                     </section>
-                    <section className={`absolute bottom-0 left-0 w-full p-3 pb-20 overflow-y-auto bg-white shadow-upper rounded-t-xl h-2/3 ${fullScreen ? "scale-y-0" : "scale-y-100"}`}>
-                        {
-                            !result ?
-                                <p className='text-2xl text-zinc-500'>Loading...</p>
-                                :
-                                <p>{result}</p>
-                        }
+                    <section className={`absolute bottom-0 left-0 w-full p-3 pb-24 overflow-y-auto bg-white shadow-upper rounded-t-xl h-2/3 ${fullScreen ? "scale-y-0" : "scale-y-100"}`}>
+                        <Accordion>
+                            <Accordion.Item value='Scan Result'>
+                                <Accordion.Control>
+                                    <h1 className='text-xl font-medium'>Hasil Scan</h1>
+                                </Accordion.Control>
+                                <Accordion.Panel>
+                                    {
+                                        !result ?
+                                            <p className='text-2xl text-zinc-500'>Loading...</p>
+                                            :
+                                            <>
+                                                <p className='text-sm'>{result}</p>
+                                            </>
+                                    }
+                                </Accordion.Panel>
+                            </Accordion.Item>
+                        </Accordion>
+
                     </section>
                 </>
                 :

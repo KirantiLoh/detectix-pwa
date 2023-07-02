@@ -14,7 +14,16 @@ module.exports = {
       },
       boxShadow: {
         'upper': '0 -3px 6px -1px rgb(0 0 0 / 0.1), 0 -2px 4px -2px rgb(0 0 0 / 0.1)',
-      }
+      },
+      screens: {
+        standalone: { raw: "(display-mode: standalone)" },
+      },
+      spacing: {
+        "safe-top": "env(safe-area-inset-top)",
+        "safe-bottom": "env(safe-area-inset-bottom)",
+        "safe-left": "env(safe-area-inset-left)",
+        "safe-right": "env(safe-area-inset-right)",
+      },
     },
   },
   plugins: [],

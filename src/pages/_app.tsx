@@ -6,6 +6,7 @@ import { AuthProvider } from '@/context/AuthContext';
 import { OCRProvider } from '@/context/OCRContext';
 import { Poppins } from "next/font/google"
 import { Global } from '@emotion/react';
+import { Notifications } from '@mantine/notifications';
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"] })
 
@@ -14,7 +15,12 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>Detectix</title>
-        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
+        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no" />
+        <link rel="manifest" href="/manifest.json" />
       </Head>
 
       <MantineProvider
@@ -23,14 +29,20 @@ export default function App({ Component, pageProps }: AppProps) {
         theme={{
           /** Put your mantine theme override here */
           colorScheme: 'light',
-          // fontFamily: 'poppins, Trebuchet MS, sans-serif',
+          // fontFamily: 'Poppins, Trebuchet MS, sans-serif',
           colors: {
             "primary": ["rgb(22 163 74)", "rgb(22 163 74)", "rgb(22 163 74)", "rgb(22 163 74)", "rgb(22 163 74)", "rgb(22 163 74)", "rgb(22 163 74)", "rgb(22 163 74)", "rgb(22 163 74)", "rgb(22 163 74)"],
           },
           primaryColor: "primary",
+          globalStyles: theme => ({
+            body: {
+              ...theme.fn.fontStyles(),
+              ...poppins.style,
+            }
+          })
         }}
       >
-        <Global styles={`${poppins.className}`} />
+        <Notifications />
         <OCRProvider>
           <AuthProvider>
             <Component {...pageProps} />
