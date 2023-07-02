@@ -24,7 +24,6 @@ const SearchBar = () => {
                 placeholder='Cari berdasarkan ID BPOM'
                 radius="xl"
                 icon={<HiSearch />}
-                rightSection={<AiOutlineEnter className='' onClick={handleSearch} />}
                 variant='filled'
                 classNames={{
                     input: "bg-white shadow"
