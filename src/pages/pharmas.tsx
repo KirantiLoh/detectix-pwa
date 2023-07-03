@@ -3,14 +3,19 @@ import getAddress from '@/utils/getAddress';
 import { Icon } from 'leaflet';
 import dynamic from 'next/dynamic'
 import React, { useEffect, useState } from 'react'
-import { Marker, Popup, useMap } from 'react-leaflet';
 
 const Map = dynamic(() => import('@/components/Map'), {
     ssr: false,
     loading: () => <div>Loading...</div>
 });
 
+const Markers = dynamic(() => import('@/components/Markers'), {
+    ssr: false,
+});
 
+const Marker = dynamic(() => import('@/components/Marker'), {
+    ssr: false,
+});
 
 const PharmaPage = () => {
 
@@ -32,7 +37,8 @@ const PharmaPage = () => {
             <section className="relative flex-1">
                 {center ?
                     <Map latitude={center.latitude} longitude={center.longitude}>
-                        {/* <Markers /> */}
+                        <Marker latitude={center.latitude} longitude={center.longitude} name="Current Location" />
+                        <Markers />
                     </Map>
                     :
                     <></>}

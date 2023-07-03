@@ -56,10 +56,10 @@ const ReminderPage = () => {
 
     return (
         <main className='min-h-screen p-3 pb-24'>
-            <h1 className='px-2 mb-3 text-2xl font-bold text-zinc-700'>Jadwal Konsumsi</h1>
             <section className='flex flex-col items-center justify-start'>
+                <h1 className='px-2 mb-3 text-2xl font-bold'>Jadwal Konsumsi</h1>
                 <DatePicker
-                    className='p-3 shadow-md rounded-xl'
+                    className='p-3 bg-white shadow-lg rounded-xl'
                     date={date}
                     onDateChange={setDate}
                     value={date}

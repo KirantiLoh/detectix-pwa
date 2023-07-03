@@ -26,7 +26,6 @@ const SearchBar = () => {
                 onChange={(e) => setSearch(e.currentTarget.value)}
                 placeholder='ID BPOM, bahan aktif, atau nama produk'
                 radius="xl"
-                icon={<HiSearch />}
                 // icon={<HiSearch />}
                 rightSection={<HiSearch className='' onClick={handleSearch} />}
                 variant='filled'

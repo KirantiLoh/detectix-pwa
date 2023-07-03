@@ -1,3 +1,5 @@
+import IDResult from '@/components/Search/IDResult';
+import NameResult from '@/components/Search/NameResult';
 import SearchItem from '@/components/SearchItem';
 import { MedicineType } from '@/typings/app';
 import { Tabs } from '@mantine/core';
@@ -28,21 +30,11 @@ const SearchPage = () => {
                 </Tabs.List>
                 <Tabs.Panel value='id' className="">
                     <h2 className="text-xl font-medium text-zinc-700">Berdasarkan ID</h2>
-                    <div className="flex flex-col items-center justify-center">
-                        <Image src="/not-found.svg" width={300} height={300} alt="Not Found" className="mx-auto" />
-                        <p className='-mt-16 font-semibold'>
-                            Hasil tak ditemukan
-                        </p>
-                    </div>
+                    <IDResult />
                 </Tabs.Panel>
                 <Tabs.Panel value='bahan' className="">
                     <h2 className="text-xl font-medium text-zinc-700">Berdasarkan Bahan Aktif</h2>
-                    <div className="flex flex-col items-center justify-center">
-                        <Image src="/not-found.svg" width={300} height={300} alt="Not Found" className="mx-auto" />
-                        <p className='-mt-16 font-semibold'>
-                            Hasil tak ditemukan
-                        </p>
-                    </div>
+                    <NameResult />
                 </Tabs.Panel>
                 <Tabs.Panel value='nama' className="">
                     <h2 className="text-xl font-medium text-zinc-700">Berdasarkan Nama Produk</h2>
