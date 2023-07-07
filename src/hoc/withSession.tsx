@@ -17,7 +17,7 @@ const withSession = <T extends object>(Component: ComponentType<T>) => {
         }, [])
 
 
-        return user && !loading ? <Component {...props} /> : <></>
+        return user && !loading ? <Component {...props} /> : <main></main>
 
     }
 }

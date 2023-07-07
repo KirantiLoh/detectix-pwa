@@ -21,8 +21,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     return (
         <AuthContext.Provider value={contextValue}>
-            {!loading ? children : null}
-            {user ? <BottomTab /> : null}
+            <main>
+                {!loading ? children : null}
+                {user ? <BottomTab /> : null}
+            </main>
         </AuthContext.Provider>
     )
 }

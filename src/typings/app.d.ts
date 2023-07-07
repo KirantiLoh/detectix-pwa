@@ -1,3 +1,5 @@
+import { Timestamp } from "firebase/firestore";
+
 export interface MedicineType {
   product_id: string;
   application_id: string;
@@ -21,4 +23,12 @@ export interface Details {
   komposisi: string[];
   merk: string;
   masa_berlaku: string;
+}
+
+export interface ScheduleType {
+  id: string;
+  title: string;
+  description: string;
+  time: Timestamp;
+  isDone: boolean;
 }

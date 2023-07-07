@@ -14,7 +14,6 @@ const poppins = Poppins({ subsets: ["latin"], weight: ["100", "200", "300", "400
 
 const queryClient = new QueryClient()
 
-
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>

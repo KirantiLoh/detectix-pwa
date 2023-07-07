@@ -16,7 +16,8 @@ const IDResult = () => {
             const res = await axios.get(`/bpom/products/${q}`);
             return await res.data;
         },
-        queryKey: ["id-result", q]
+        queryKey: ["id-result", q],
+        retry: 2,
     })
 
     if (isLoading) {
