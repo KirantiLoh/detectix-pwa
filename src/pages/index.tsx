@@ -35,10 +35,10 @@ const HomePage = () => {
   return (
     <main className="flex flex-col min-h-screen gap-5 p-5 pb-24 ">
       <section className="p-5 pb-10 -mx-5 -mt-5 bg-green-800 rounded-b-lg shadow-md bg-opacity-90">
-        <aside style={montserrat.style} className="flex items-center gap-1 font-bold text-white overflow-ellipsis font-montserrat">
+        <div style={montserrat.style} className="flex items-center gap-1 font-bold text-white overflow-ellipsis font-montserrat">
           <h1 className="text-lg font-normal">Halo, </h1>
           <h1 className="text-lg">{user?.displayName}</h1>
-        </aside>
+        </div>
         <h1 style={montserrat.style} className="mb-5 text-2xl font-semibold text-white">Jagalah Kesehatan</h1>
         <SearchBar />
       </section>

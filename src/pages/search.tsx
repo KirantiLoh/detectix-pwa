@@ -42,7 +42,7 @@ const SearchPage = () => {
                         {
                             obats.map((obat, index) => (
                                 <li key={index}>
-                                    <SearchItem {...obat} />
+                                    <SearchItem {...obat} product_id={obat.product_register} />
                                 </li>
                             ))
                         }

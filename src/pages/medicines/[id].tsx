@@ -1,3 +1,4 @@
+import { Accordion } from '@mantine/core'
 import React from 'react'
 
 const MedicineByIdPage = () => {
@@ -6,10 +7,53 @@ const MedicineByIdPage = () => {
 
 
     return (
-        <main className="flex flex-col min-h-screen gap-3 p-5 pb-24">
+        <div className="flex flex-col min-h-screen gap-3 p-5 pb-24">
             <h1 className="text-2xl font-bold text-zinc-700">Detail Obat</h1>
+            <article>
+                <h2 className='text-sm'>Nama Obat</h2>
+                <p className='text-xs'>{obat.product_name}</p>
+            </article>
+            <div>
+                <article>
+                    <h2 className='text-sm'>Status</h2>
+                    <p className='text-xs'>{obat.status}</p>
+                </article>
+            </div>
+            <div>
+                <article>
+                    <h2 className='text-sm'>Kemasan</h2>
+                    <p className='text-xs'>{obat.product_package}</p>
+                </article>
+            </div>
+            <div>
+                <article>
+                    <h2 className='text-sm'>Bentuk Sediaan</h2>
+                    <p className='text-xs'>{obat.details.bentuk_sediaan}</p>
+                </article>
+            </div>
+            <div>
+                <article>
+                    <h2 className='text-sm'>Pendaftar</h2>
+                    <p className='text-xs'>{obat.pendaftar}</p>
+                </article>
+            </div>
+            <Accordion>
+                <Accordion.Item value="Detail Obat">
+                    <Accordion.Control>Komposisi</Accordion.Control>
+                    <Accordion.Panel>
+                        <article>
+                            <ul className='flex flex-wrap items-center'>
+                                {obat.details.komposisi.map((komposisi, index) => (
+                                    <li key={index} className='text-xs'>{komposisi}</li>
+                                ))}
+                            </ul>
+                            {/* <p className='text-xs'>{obat.details.komposisi}</p> */}
+                        </article>
+                    </Accordion.Panel>
+                </Accordion.Item>
 
-        </main>
+            </Accordion>
+        </div>
     )
 }
 
