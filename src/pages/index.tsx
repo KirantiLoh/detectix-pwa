@@ -115,8 +115,8 @@ const HomePage = () => {
             reminders.map((val, index) => (
               <li key={index} className="flex gap-4 p-2 border-2 rounded-md border-zinc-300">
                 <article className="flex flex-col items-center justify-center px-3 py-0.5 bg-green-100 border-2 border-green-300 rounded">
-                  <p className="text-xl">{new Date().getDate()}</p>
-                  <p className="text-xs">{Intl.DateTimeFormat("id-ID", { dateStyle: "long" }).format(new Date()).split(" ")[1]}</p>
+                  <p className="text-xl">{val.time.toDate().getDate()}</p>
+                  <p className="text-xs">{Intl.DateTimeFormat("id-ID", { dateStyle: "long" }).format(val.time.toDate()).split(" ")[1]}</p>
                 </article>
                 <article className="flex flex-col">
                   <Badge size="xs" color="green" variant="outline" className="mb-1 w-max">
