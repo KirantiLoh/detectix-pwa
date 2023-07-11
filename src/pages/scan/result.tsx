@@ -54,7 +54,7 @@ const ScanResultPage = () => {
                                             </>
                                             :
                                             <>
-                                                <p className='text-sm'>{result}</p>
+                                                <p className='text-sm'>{result.replaceAll(" ", "")}</p>
                                             </>
                                     }
                                 </Accordion.Panel>
@@ -65,8 +65,8 @@ const ScanResultPage = () => {
                                 </Accordion.Control>
                                 <Accordion.Panel>
                                     {
-                                        !result ?
-                                            <p className='text-sm'>{result.replaceAll(" ", "").match(/^[A-Z]{2,3}\w{12,13}$/gm)?.[0]}</p>
+                                        result ?
+                                            <div className='text-sm'>{result.replaceAll(" ", "").match(/[A-Z]{2,3}\w{11,12}\d/)![0] ?? "-"}</div>
                                             :
                                             <>
                                                 <p className='mb-3 text-2xl text-zinc-500'>Loading...</p>
