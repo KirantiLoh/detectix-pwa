@@ -29,7 +29,7 @@ const resizeImage = async (file: File, size: number) => {
     height * ratio
   );
 
-  ctx!.filter = "grayscale(100%); invert(100%);";
+  ctx!.filter = "grayscale(100%)";
 
   return new Promise<Blob | null>((resolve) => {
     canvas.toBlob(

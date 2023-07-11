@@ -64,7 +64,15 @@ const ScanResultPage = () => {
                                     <h1 className='text-xl font-medium'>ID BPOM</h1>
                                 </Accordion.Control>
                                 <Accordion.Panel>
-                                    <p className='text-sm'>{result.replaceAll(" ", "").match(/^[A-Z]{2,3}\w{12,13}$/gm) ?? "-"}</p>
+                                    {
+                                        !result ?
+                                            <p className='text-sm'>{result.replaceAll(" ", "").match(/^[A-Z]{2,3}\w{12,13}$/gm)?.[0]}</p>
+                                            :
+                                            <>
+                                                <p className='mb-3 text-2xl text-zinc-500'>Loading...</p>
+                                                <Progress color='lime' animate value={progress} />
+                                            </>
+                                    }
                                 </Accordion.Panel>
                             </Accordion.Item>
                         </Accordion>
