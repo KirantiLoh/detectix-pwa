@@ -4,21 +4,19 @@ import Link from 'next/link'
 import React from 'react'
 
 const SearchItem = ({
-    product_id,
-    product_name,
+    PRODUCT_REGISTER,
+    PRODUCT_NAME,
     details
 }: MedicineType) => {
     return (
-        <Link href={`/medicines/${product_id}`}>
-            <div className='flex items-center justify-between p-3 rounded-md shadow'>
-                <h3>{product_name}</h3>
-                <Badge
+        <Link href={`/medicines/${PRODUCT_REGISTER}`} className='flex items-center justify-between gap-3 p-3 rounded-md shadow'>
+            <p className='text-xs'>{PRODUCT_NAME}</p>
+            {/* <Badge
                     color='primary'
                     variant='outline'
                 >
-                    {details.produk}
-                </Badge>
-            </div>
+                    {details?.produk ?? 'Produk'}
+                </Badge> */}
         </Link>
     )
 }

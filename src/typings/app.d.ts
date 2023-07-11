@@ -1,17 +1,17 @@
 import { Timestamp } from "firebase/firestore";
 
 export interface MedicineType {
-  product_id: string;
-  application_id: string;
-  class_id: string;
-  product_register: string;
-  product_date: string;
-  product_name: string;
-  product_brands: string;
-  product_package: string;
-  pendaftar: string;
-  alamat_pendaftar: string;
-  status: string;
+  PRODUCT_ID: string;
+  APPLICATION_ID: string;
+  CLASS_ID: string;
+  PRODUCT_REGISTER: string;
+  PRODUCT_DATE: string;
+  PRODUCT_NAME: string;
+  PRODUCT_BRANDS: string;
+  PRODUCT_PACKAGE: string;
+  PENDAFTAR: string;
+  ALAMAT_PENDAFTAR: string;
+  STATUS: string;
   details: Details;
 }
 

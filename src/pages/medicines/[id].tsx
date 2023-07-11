@@ -1,9 +1,10 @@
+import { env } from '@/env.mjs';
+import { MedicineType } from '@/typings/app';
 import { Accordion } from '@mantine/core'
+import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
 import React from 'react'
 
-const MedicineByIdPage = () => {
-
-    const obat = { "product_id": "EREG10037412300028", "application_id": "05", "class_id": "01", "product_register": "DBL1441200233A1", "product_date": "Terbit: 25-06-2023", "product_name": "MYLANTA", "product_brands": "Merk: -", "product_package": "Kemasan: BOTOL PLASTIK @ 50 ML", "pendaftar": "INTEGRATED HEALTHCARE INDONESIA - Indonesia", "alamat_pendaftar": "-", "status": "Berlakus/d 25-06-2028", "details": { "tanggal_terbit": "25-06-2023", "diterbitkan_oleh": "Registrasi Obat", "produk": "Obat", "bentuk_sediaan": "SUSPENSI; 1075.500 MG /666.700 MG /66.600 MG", "komposisi": ["ALUMINIUM HYDROXIDE GEL", "MAGNESIUM HYDROXIDE PASTE", "SIMETHICONE EMULSION 30"], "merk": "-", "masa_berlaku": "25-06-2028" } }
+const MedicineByIdPage = ({ data: obat }: { data: MedicineType }) => {
 
 
     return (
@@ -11,18 +12,18 @@ const MedicineByIdPage = () => {
             <h1 className="text-2xl font-bold text-zinc-700">Detail Obat</h1>
             <article>
                 <h2 className='text-sm'>Nama Obat</h2>
-                <p className='text-xs'>{obat.product_name}</p>
+                <p className='text-xs'>{obat.PRODUCT_NAME}</p>
             </article>
             <div>
                 <article>
                     <h2 className='text-sm'>Status</h2>
-                    <p className='text-xs'>{obat.status}</p>
+                    <p className='text-xs'>{obat.STATUS}</p>
                 </article>
             </div>
             <div>
                 <article>
                     <h2 className='text-sm'>Kemasan</h2>
-                    <p className='text-xs'>{obat.product_package}</p>
+                    <p className='text-xs'>{obat.PRODUCT_PACKAGE}</p>
                 </article>
             </div>
             <div>
@@ -34,7 +35,7 @@ const MedicineByIdPage = () => {
             <div>
                 <article>
                     <h2 className='text-sm'>Pendaftar</h2>
-                    <p className='text-xs'>{obat.pendaftar}</p>
+                    <p className='text-xs'>{obat.PENDAFTAR}</p>
                 </article>
             </div>
             <Accordion>
@@ -43,9 +44,12 @@ const MedicineByIdPage = () => {
                     <Accordion.Panel>
                         <article>
                             <ul className='flex flex-wrap items-center'>
-                                {obat.details.komposisi.map((komposisi, index) => (
-                                    <li key={index} className='text-xs'>{komposisi}</li>
-                                ))}
+                                {obat.details.komposisi ?
+                                    obat.details.komposisi.map((komposisi, index) => (
+                                        <li key={index} className='text-xs'>{komposisi}</li>
+                                    ))
+                                    :
+                                    <p>-</p>}
                             </ul>
                             {/* <p className='text-xs'>{obat.details.komposisi}</p> */}
                         </article>
@@ -58,3 +62,20 @@ const MedicineByIdPage = () => {
 }
 
 export default MedicineByIdPage
+
+export const getServerSideProps = async ({ query }: GetServerSidePropsContext) => {
+    const res = await fetch(`${env.NEXT_PUBLIC_BACKEND_URL}/bpom/products/${query.id}`);
+    const data = await res.json();
+    console.log(data)
+    if (res.status !== 200) {
+        return {
+            notFound: true,
+        }
+    }
+    return {
+        props: {
+            data
+        }
+    } satisfies GetServerSidePropsResult<{ data: MedicineType }>
+
+}

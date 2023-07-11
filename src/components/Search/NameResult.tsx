@@ -4,6 +4,7 @@ import SearchItem from '../SearchItem';
 import { useRouter } from 'next/router';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { MedicineType } from '@/typings/app';
 
 const NameResult = () => {
 
@@ -11,12 +12,13 @@ const NameResult = () => {
 
     const { q } = router.query;
 
-    const { data, isLoading } = useQuery({
+    const { data, isLoading } = useQuery<MedicineType[]>({
         queryFn: async () => {
-            const res = await axios.get(`/bpom/products/${q}`);
+            const res = await axios.get(`/api/bpom/search/${q}`);
             return await res.data;
         },
-        queryKey: ["id-result", q]
+        queryKey: ["id-result", q],
+        retry: 0,
     })
 
     if (isLoading) {
@@ -25,10 +27,15 @@ const NameResult = () => {
         )
     }
 
+    console.log(data)
     return (
         <>
-            {data ?
-                <SearchItem {...(data)} />
+            {data && data.length > 0 ?
+                <ul className="flex flex-col gap-3">
+                    {data.map((obat, index) => (
+                        <SearchItem {...(obat)} key={index} />
+                    ))}
+                </ul>
                 :
                 <div className="flex flex-col items-center justify-center">
                     <Image src="/not-found.svg" width={300} height={300} alt="Not Found" className="mx-auto" />

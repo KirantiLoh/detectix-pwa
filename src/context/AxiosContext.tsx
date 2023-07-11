@@ -8,7 +8,7 @@ const AxiosContext = createContext({
 export const AxiosProvider = ({ children }: { children: ReactNode }) => {
 
 
-    axios.defaults.baseURL = env.NEXT_PUBLIC_BACKEND_URL;
+    // axios.defaults.baseURL = env.NEXT_PUBLIC_BACKEND_URL;
 
     const contextValue = {
 
