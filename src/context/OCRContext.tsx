@@ -6,6 +6,7 @@ const OCRContext = createContext({
     worker: null as Worker | null,
     result: "",
     imageUrl: "",
+    progress: 0,
     clearImage: () => { },
     scanImage: async (url: string) => { }
 });
@@ -15,6 +16,7 @@ export const OCRProvider = ({ children }: { children: ReactNode }) => {
     const [imageUrl, setImageUrl] = useState<string>('');
     const [worker, setWorker] = useState<Worker | null>(null);
     const [result, setResult] = useState<string>('');
+    const [progress, setProgress] = useState<number>(0);
 
     const router = useRouter();
 
@@ -33,10 +35,16 @@ export const OCRProvider = ({ children }: { children: ReactNode }) => {
 
     const initializeOCR = async () => {
         const newWorker = await createWorker({
-            logger: m => console.log(m)
+            logger: m => {
+                console.log(m);
+                setProgress(m.progress * 100);
+            }
         });
         await newWorker.loadLanguage('eng+ind');
         await newWorker.initialize('eng+ind');
+        await newWorker.setParameters({
+            // tessedit_char_whitelist: "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz/' '", // whitelist
+        })
         setWorker(newWorker);
     }
 
@@ -53,6 +61,7 @@ export const OCRProvider = ({ children }: { children: ReactNode }) => {
         imageUrl,
         scanImage,
         clearImage,
+        progress,
     }
 
     return (

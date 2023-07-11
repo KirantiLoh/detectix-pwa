@@ -4,11 +4,11 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react'
 import { AiOutlineFullscreen, AiOutlineFullscreenExit } from 'react-icons/ai'
-import { Accordion } from '@mantine/core'
+import { Accordion, Progress } from '@mantine/core'
 
 const ScanResultPage = () => {
 
-    const { result, imageUrl, clearImage } = useOCR();
+    const { result, imageUrl, clearImage, progress } = useOCR();
 
     const router = useRouter();
 
@@ -31,7 +31,7 @@ const ScanResultPage = () => {
         <main className='h-screen'>
             {imageUrl ?
                 <>
-                    <section className={`transition-all duration-300 relative z-0 w-full bg-black flex flex-col items-center justify-center ${fullScreen ? "h-full bg-opacity-75" : "h-1/3 bg-opacity-0"}`}>
+                    <section className={`transition-all duration-300 relative z-0 max-w-lg w-full bg-black flex flex-col items-center justify-center ${fullScreen ? "h-full bg-opacity-75" : "h-1/3 bg-opacity-0"}`}>
                         <aside className={`relative w-full ${fullScreen ? "h-1/3" : "h-full"}`}>
                             <Image src={imageUrl} alt="Scan result" fill className='object-cover' />
                         </aside>
@@ -48,12 +48,23 @@ const ScanResultPage = () => {
                                 <Accordion.Panel>
                                     {
                                         !result ?
-                                            <p className='text-2xl text-zinc-500'>Loading...</p>
+                                            <>
+                                                <p className='mb-3 text-2xl text-zinc-500'>Loading...</p>
+                                                <Progress color='lime' animate value={progress} />
+                                            </>
                                             :
                                             <>
                                                 <p className='text-sm'>{result}</p>
                                             </>
                                     }
+                                </Accordion.Panel>
+                            </Accordion.Item>
+                            <Accordion.Item value='BPOM_ID'>
+                                <Accordion.Control>
+                                    <h1 className='text-xl font-medium'>ID BPOM</h1>
+                                </Accordion.Control>
+                                <Accordion.Panel>
+                                    <p className='text-sm'>{result.match(/^[A-Z]{2,3}\w{12,13}$/gm) ?? "-"}</p>
                                 </Accordion.Panel>
                             </Accordion.Item>
                         </Accordion>

@@ -6,6 +6,8 @@ import { HiOutlineHome, HiOutlineCalendar, HiOutlineLocationMarker, HiOutlineUse
 import { LuScanFace } from "react-icons/lu"
 
 import { useOCR } from '@/context/OCRContext';
+import resizeImage from '@/utils/resizeImage';
+
 const NavLink = ({ href, children, className, currentPage }: {
     href: string;
     children: ReactNode;
@@ -27,13 +29,15 @@ const BottomTab = () => {
 
     const inputRef = useRef<HTMLInputElement>(null);
 
-    const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (!file) {
             router.replace('/');
             return;
         }
-        const imageUrl = URL.createObjectURL(file);
+        const image = await resizeImage(file, 2000);
+        if (!image) return;
+        const imageUrl = URL.createObjectURL(image);
         inputRef.current!.value = '';
         scanImage(imageUrl);
     }
