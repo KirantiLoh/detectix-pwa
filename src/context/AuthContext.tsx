@@ -1,4 +1,5 @@
 import BottomTab from '@/components/base/BottomTab';
+import LoadingScreen from '@/components/base/LoadingScreen';
 import { auth } from '@/lib/firebaseConfig';
 import { User, onAuthStateChanged } from 'firebase/auth';
 import { useRouter } from 'next/router';
@@ -22,7 +23,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     return (
         <AuthContext.Provider value={contextValue}>
             <>
-                {!loading ? children : null}
+                {!loading ? children : <LoadingScreen />}
                 {user ? <BottomTab /> : null}
             </>
         </AuthContext.Provider>
