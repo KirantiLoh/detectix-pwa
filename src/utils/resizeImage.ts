@@ -1,18 +1,15 @@
-import exp from "constants";
-
 const resizeImage = async (file: File, size: number) => {
   size ??= 256;
 
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
 
+  const bitmap = await createImageBitmap(file);
+  const { width, height } = bitmap;
   canvas.width = size;
   canvas.height = size;
 
-  const bitmap = await createImageBitmap(file);
-  const { width, height } = bitmap;
-
-  const ratio = Math.max(size / width, size / height);
+  const ratio = Math.max(size / width, size / height, 1);
 
   const x = (size - width * ratio) / 2;
   const y = (size - height * ratio) / 2;

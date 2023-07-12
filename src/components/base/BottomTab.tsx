@@ -35,9 +35,9 @@ const BottomTab = () => {
             router.replace('/');
             return;
         }
-        const image = await resizeImage(file, 2500);
-        if (!image) return;
-        const imageUrl = URL.createObjectURL(image);
+        // const image = await resizeImage(file, 2000);
+        // if (!image) return;
+        const imageUrl = URL.createObjectURL(file);
         inputRef.current!.value = '';
         scanImage(imageUrl);
     }

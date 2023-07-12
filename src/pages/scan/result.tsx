@@ -74,7 +74,7 @@ const ScanResultPage = () => {
                                                             {result.replaceAll(" ", "").replace("BPOM", "").replace("RI", "").match(/[A-Z]{2,3}\w{11,12}\d/)![0]}
                                                         </Link>
                                                         :
-                                                        <Link href="/medicines/DTL7813003810A1">DTL7813003810A1</Link>
+                                                        <p>Tak ada ID dalam gambar</p>
                                                 }
                                             </>
                                             :
