@@ -69,7 +69,7 @@ const ScanResultPage = () => {
                                         result ?
                                             <>
                                                 {
-                                                    result.replaceAll(" ", "").replace("BPOM", "").replace("RI", "").match(/[A-Z]{2,3}\w{11,12}\d/)![0] ?
+                                                    result.replaceAll(" ", "").replace("BPOM", "").replace("RI", "").match(/[A-Z]{2,3}\w{11,12}\d/) ?
                                                         <Link href={`/medicines/${result.replaceAll(" ", "").replace("BPOM", "").replace("RI", "").match(/[A-Z]{2,3}\w{11,12}\d/)![0]}`} className='text-sm underline underline-offset-2'>
                                                             {result.replaceAll(" ", "").replace("BPOM", "").replace("RI", "").match(/[A-Z]{2,3}\w{11,12}\d/)![0]}
                                                         </Link>
