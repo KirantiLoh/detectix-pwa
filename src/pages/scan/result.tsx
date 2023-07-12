@@ -66,7 +66,7 @@ const ScanResultPage = () => {
                                 <Accordion.Panel>
                                     {
                                         result ?
-                                            <div className='text-sm'>{result.replaceAll(" ", "").match(/[A-Z]{2,3}\w{11,12}\d/)![0] ?? "-"}</div>
+                                            <div className='text-sm'>{result.replaceAll(" ", "").replace("BPOM", "").replace("RI", "").match(/[A-Z]{2,3}\w{11,12}\d/)![0] ?? "-"}</div>
                                             :
                                             <>
                                                 <p className='mb-3 text-2xl text-zinc-500'>Loading...</p>
