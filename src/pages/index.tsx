@@ -56,7 +56,7 @@ const HomePage = () => {
             </Link>
           </li>
           <li className="flex-1">
-            <Link href="/" className="flex items-center justify-center w-full text-green-600 bg-white rounded-md shadow aspect-square">
+            <Link href="/chemicals" className="flex items-center justify-center w-full text-green-600 bg-white rounded-md shadow aspect-square">
               <GiMicroscope className="text-2xl" />
             </Link>
           </li>

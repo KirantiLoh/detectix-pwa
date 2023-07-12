@@ -40,7 +40,7 @@ const ScanResultPage = () => {
                             {fullScreen ? <AiOutlineFullscreenExit /> : <AiOutlineFullscreen />}
                         </button>
                     </section>
-                    <section className={`absolute bottom-0 left-0 w-full p-3 pb-24 overflow-y-auto bg-white shadow-upper rounded-t-xl h-2/3 ${fullScreen ? "scale-y-0" : "scale-y-100"}`}>
+                    <section className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-lg p-3 pb-24 overflow-y-auto bg-white shadow-upper rounded-t-xl h-2/3 ${fullScreen ? "scale-y-0" : "scale-y-100"}`}>
                         <Accordion>
                             <Accordion.Item value='Scan Result'>
                                 <Accordion.Control>
