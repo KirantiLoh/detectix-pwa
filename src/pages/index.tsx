@@ -8,7 +8,7 @@ import { BiSearchAlt } from "react-icons/bi";
 import { BsQrCodeScan } from "react-icons/bs"
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { HiCalendar, HiInformationCircle, HiOutlineLocationMarker } from "react-icons/hi";
+import { HiCalendar, HiInformationCircle, HiOutlineLocationMarker, HiPlus } from "react-icons/hi";
 import { GiCalendar, GiMicroscope, GiNotebook } from "react-icons/gi";
 import Link from "next/link";
 import { collection, getDocs, limit, orderBy, query, where } from "firebase/firestore";
@@ -56,24 +56,29 @@ const HomePage = () => {
             </Link>
           </li>
           <li className="flex-1">
-            <Link href="/chemicals" className="flex items-center justify-center w-full text-green-600 bg-white rounded-md shadow aspect-square">
+            <Link href="/chemicals" className="flex items-center justify-center w-full text-green-600 bg-white rounded-md shadow hover:bg-slate-100 aspect-square">
               <GiMicroscope className="text-2xl" />
             </Link>
           </li>
           <li className="flex-1">
-            <Link href="/" className="flex items-center justify-center w-full text-green-600 bg-white rounded-md shadow aspect-square">
+            <Link href="/" className="flex items-center justify-center w-full text-green-600 bg-white rounded-md shadow hover:bg-slate-100 aspect-square">
               <GiNotebook className="text-2xl" />
             </Link>
           </li>
           <li className="flex-1">
-            <Link href="/about" className="flex items-center justify-center w-full text-green-600 bg-white rounded-md shadow aspect-square">
+            <Link href="/about" className="flex items-center justify-center w-full text-green-600 bg-white rounded-md shadow hover:bg-slate-100 aspect-square">
               <HiInformationCircle className="text-2xl" />
             </Link>
           </li>
         </ul>
       </section>
       <section className="">
-        <h1 style={poppins.style} className="mb-4 text-[#333] text-xl">Alergen Anda</h1>
+        <div className="flex items-center justify-between mb-4">
+          <h1 style={poppins.style} className="text-[#333] text-xl">Alergen Anda</h1>
+          <Link href="/chemicals">
+            <HiPlus className="text-2xl hover:text-green-600" />
+          </Link>
+        </div>
         <Carousel
           height={170}
           withControls={false}
