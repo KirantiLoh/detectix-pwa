@@ -43,7 +43,7 @@ const MedicineByIdPage = ({ data: obat }: { data: MedicineType }) => {
                     <Accordion.Control>Komposisi</Accordion.Control>
                     <Accordion.Panel>
                         <article>
-                            <ul className='flex flex-wrap items-center'>
+                            <ul className='flex flex-col gap-1'>
                                 {obat.details.komposisi ?
                                     obat.details.komposisi.map((komposisi, index) => (
                                         <li key={index} className='text-xs'>{komposisi}</li>

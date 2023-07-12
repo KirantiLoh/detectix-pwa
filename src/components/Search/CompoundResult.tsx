@@ -6,7 +6,7 @@ import axios from 'axios'
 import SearchItem from '../SearchItem';
 import { MedicineType } from '@/typings/app';
 
-const IDResult = () => {
+const CompoundResult = () => {
 
     const router = useRouter();
 
@@ -14,10 +14,10 @@ const IDResult = () => {
 
     const { data, isLoading } = useQuery<MedicineType[]>({
         queryFn: async () => {
-            const res = await axios.get(`/api/bpom/products/${q}`);
+            const res = await axios.get(`/api/bpom/search/compound/${q}`);
             return await res.data;
         },
-        queryKey: ["medicines", q],
+        queryKey: ["compound-result", q],
         retry: 0,
     })
 
@@ -46,4 +46,4 @@ const IDResult = () => {
     )
 }
 
-export default IDResult
+export default CompoundResult

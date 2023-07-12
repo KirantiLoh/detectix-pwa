@@ -1,3 +1,4 @@
+import CompoundResult from '@/components/Search/CompoundResult';
 import IDResult from '@/components/Search/IDResult';
 import NameResult from '@/components/Search/NameResult';
 import { Tabs } from '@mantine/core';
@@ -26,7 +27,7 @@ const SearchPage = () => {
                 </Tabs.Panel>
                 <Tabs.Panel value='bahan' className="">
                     <h2 className="mb-2 text-xl font-medium text-zinc-700">Berdasarkan Bahan Aktif</h2>
-                    {/* <NameResult /> */}
+                    <CompoundResult />
                 </Tabs.Panel>
                 <Tabs.Panel value='nama' className="">
                     <h2 className="mb-2 text-xl font-medium text-zinc-700">Berdasarkan Nama Produk</h2>

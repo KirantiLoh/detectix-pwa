@@ -9,6 +9,7 @@ import { Global } from '@emotion/react';
 import { Notifications } from '@mantine/notifications';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AxiosProvider } from '@/context/AxiosContext';
+import { FCMProvider } from '@/context/FCMContext';
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"] })
 
@@ -84,9 +85,11 @@ export default function App({ Component, pageProps }: AppProps) {
           <Notifications />
           <OCRProvider>
             <AuthProvider>
-              <AxiosProvider>
-                <Component {...pageProps} />
-              </AxiosProvider>
+              <FCMProvider>
+                <AxiosProvider>
+                  <Component {...pageProps} />
+                </AxiosProvider>
+              </FCMProvider>
             </AuthProvider>
           </OCRProvider>
         </MantineProvider>

@@ -17,7 +17,7 @@ const NameResult = () => {
             const res = await axios.get(`/api/bpom/search/${q}`);
             return await res.data;
         },
-        queryKey: ["id-result", q],
+        queryKey: ["name-result", q],
         retry: 0,
     })
 

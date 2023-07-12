@@ -13,7 +13,8 @@ app.prepare().then(() => {
 
     if (
       pathname === "/sw.js" ||
-      /^\/(workbox|worker|fallback)-\w+\.js$/.test(pathname)
+      /^\/(workbox|worker|fallback)-\w+\.js$/.test(pathname) ||
+      pathname === "/firebase-messaging-sw.js"
     ) {
       const filePath = join(__dirname, ".next", pathname);
       app.serveStatic(req, res, filePath);
