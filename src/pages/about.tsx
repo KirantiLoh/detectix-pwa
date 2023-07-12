@@ -25,8 +25,8 @@ const AboutPage = () => {
                 </li>
                 <li>
                     <article>
-                        <h2></h2>
-                        <p></p>
+                        <h2 className='text-sm'>Viorella Angelica</h2>
+                        <p className='text-xs'>Logo Designer</p>
                     </article>
                 </li>
             </ul>
