@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react'
 import { AiOutlineFullscreen, AiOutlineFullscreenExit } from 'react-icons/ai'
 import { Accordion, Progress } from '@mantine/core'
+import Link from 'next/link';
 
 const ScanResultPage = () => {
 
@@ -66,7 +67,16 @@ const ScanResultPage = () => {
                                 <Accordion.Panel>
                                     {
                                         result ?
-                                            <div className='text-sm'>{result.replaceAll(" ", "").replace("BPOM", "").replace("RI", "").match(/[A-Z]{2,3}\w{11,12}\d/)![0] ?? "-"}</div>
+                                            <>
+                                                {
+                                                    result.replaceAll(" ", "").replace("BPOM", "").replace("RI", "").match(/[A-Z]{2,3}\w{11,12}\d/)![0] ?
+                                                        <Link href={`/medicines/${result.replaceAll(" ", "").replace("BPOM", "").replace("RI", "").match(/[A-Z]{2,3}\w{11,12}\d/)![0]}`} className='text-sm underline underline-offset-2'>
+                                                            {result.replaceAll(" ", "").replace("BPOM", "").replace("RI", "").match(/[A-Z]{2,3}\w{11,12}\d/)![0]}
+                                                        </Link>
+                                                        :
+                                                        <p>Tak ada ID yang dapat didapatkan dari gambar</p>
+                                                }
+                                            </>
                                             :
                                             <>
                                                 <p className='mb-3 text-2xl text-zinc-500'>Loading...</p>
