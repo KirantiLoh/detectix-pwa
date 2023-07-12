@@ -85,11 +85,11 @@ export default function App({ Component, pageProps }: AppProps) {
           <Notifications />
           <OCRProvider>
             <AuthProvider>
-              <FCMProvider>
-                <AxiosProvider>
-                  <Component {...pageProps} />
-                </AxiosProvider>
-              </FCMProvider>
+              {/* <FCMProvider> */}
+              <AxiosProvider>
+                <Component {...pageProps} />
+              </AxiosProvider>
+              {/* </FCMProvider> */}
             </AuthProvider>
           </OCRProvider>
         </MantineProvider>
