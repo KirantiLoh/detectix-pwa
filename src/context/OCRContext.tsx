@@ -21,6 +21,7 @@ export const OCRProvider = ({ children }: { children: ReactNode }) => {
     const router = useRouter();
 
     const scanImage = async (url: string) => {
+        setProgress(0);
         router.push('/scan/result');
         setResult("");
         setImageUrl(url);
@@ -31,6 +32,7 @@ export const OCRProvider = ({ children }: { children: ReactNode }) => {
     const clearImage = () => {
         setImageUrl("");
         setResult("");
+        setProgress(0);
     }
 
     const initializeOCR = async () => {
